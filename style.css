@@ -1213,8 +1213,9 @@ h1, h2, h3, h4 {
 }
 
 .footer-logo .logo-icon {
-  width: 32px;
-  height: 32px;
+  height: 72px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-links h4, .footer-social h4 {
