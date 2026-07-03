@@ -229,8 +229,9 @@ h1, h2, h3, h4 {
 }
 
 .logo-icon {
-  width: 36px;
   height: 36px;
+  width: auto;
+  object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.2));
 }
 
