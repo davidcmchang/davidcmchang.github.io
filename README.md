@@ -3,7 +3,7 @@
 這是一個專為「台灣脫引關懷協會 (Towarding)」建置的官方網站專案。
 
 ## 🌐 專案成果連結
-*   **官方網站 (Live Site)**: [https://davidcmchang.github.io/towarding-web/](https://davidcmchang.github.io/towarding-web/)
+*   **官方網站 (Live Site)**: [https://davidcmchang.github.io/](https://davidcmchang.github.io/)
 *   **GitHub 儲存庫 (Repository)**: [https://github.com/davidcmchang](https://github.com/davidcmchang)
 
 ---
