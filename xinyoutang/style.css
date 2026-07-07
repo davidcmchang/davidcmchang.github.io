@@ -318,9 +318,12 @@ h1, h2, h3, h4 {
 /* Hero Section */
 .hero-section {
   position: relative;
-  padding: 220px 0 160px;
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.95) 35%, rgba(15, 23, 42, 0.25) 75%, rgba(15, 23, 42, 0.6) 100%), url('hero_bg.png') no-repeat center right;
-  background-size: cover;
+  padding: 240px 0 180px;
+  background-color: #00142c;
+  background-image: linear-gradient(to right, #00142c 35%, rgba(0, 20, 44, 0.2) 75%, rgba(0, 20, 44, 0.5) 100%), url('hero_bg.png');
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 100% 100%, contain;
   color: #FFFFFF;
   overflow: hidden;
 }
@@ -339,7 +342,7 @@ h1, h2, h3, h4 {
 }
 
 .hero-content {
-  max-width: 650px;
+  max-width: 800px;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -350,6 +353,12 @@ h1, h2, h3, h4 {
   font-size: 48px;
   margin-bottom: 24px;
   line-height: 1.3;
+}
+
+@media (min-width: 769px) {
+  .hero-title span {
+    white-space: nowrap;
+  }
 }
 
 .hero-desc {
@@ -1922,9 +1931,12 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 160px 0 100px;
-    background: linear-gradient(180deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.75) 100%), url('hero_bg.png') no-repeat center center;
-    background-size: cover;
+    padding: 140px 0 380px;
+    background-color: #00142c;
+    background-image: linear-gradient(180deg, #00142c 0%, rgba(0, 20, 44, 0.3) 50%, #00142c 100%), url('hero_bg.png');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100% 100%, contain;
   }
   .hero-container {
     justify-content: center;
