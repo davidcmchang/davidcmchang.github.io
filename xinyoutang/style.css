@@ -247,7 +247,7 @@ h1, h2, h3, h4 {
 }
 
 .logo-icon {
-  height: 56px;
+  height: 126px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(23, 62, 91, 0.2));
@@ -255,7 +255,7 @@ h1, h2, h3, h4 {
 }
 
 .site-header.scrolled .logo-icon {
-  height: 44px;
+  height: 90px;
 }
 
 .logo-text {
@@ -340,10 +340,10 @@ h1, h2, h3, h4 {
 
 .hero-bg-image {
   position: absolute;
-  top: 15%;
+  top: 0;
   right: 0;
-  width: 85%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: right center;
 }
