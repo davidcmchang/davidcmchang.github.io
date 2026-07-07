@@ -1,3 +1,26 @@
+// Firebase imports and config
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  // Please replace with your Firebase project credentials:
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  appId: "YOUR_APP_ID"
+};
+
+let db = null;
+try {
+  if (firebaseConfig.apiKey !== "YOUR_API_KEY") {
+    const app = initializeApp(firebaseConfig);
+    db = getFirestore(app);
+  }
+} catch (err) {
+  console.error("Firebase init failed:", err);
+}
+
 /* ==========================================================================
    Towarding Web Design - Main Script File
    ========================================================================== */
@@ -105,14 +128,44 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
-      // Fetch input values for simulation/logging if needed
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const subject = document.getElementById('subject').value;
       const message = document.getElementById('message').value;
       
       console.log('Form Submitted:', { name, email, subject, message });
-      
+
+      // 1. Save to Firebase Firestore if configured
+      if (db) {
+        addDoc(collection(db, "contact_messages"), {
+          name: name,
+          email: email,
+          subject: subject,
+          message: message,
+          timestamp: serverTimestamp()
+        }).then(() => {
+          console.log("Saved to Firestore successfully!");
+        }).catch((err) => {
+          console.error("Firestore write failed:", err);
+        });
+      } else {
+        console.log("Firebase is not configured yet. Saving skipped.");
+      }
+
+      // 2. Send email notification via EmailJS if configured
+      if (typeof emailjs !== "undefined") {
+        emailjs.send("YOUR_EMAILJS_SERVICE_ID", "YOUR_EMAILJS_TEMPLATE_ID", {
+          name: name,
+          email: email,
+          subject: subject,
+          message: message
+        }).then(() => {
+          console.log("Email notification sent successfully!");
+        }).catch((err) => {
+          console.error("EmailJS send failed:", err);
+        });
+      }
+
       // Display success modal
       feedbackModal.classList.add('active');
     });

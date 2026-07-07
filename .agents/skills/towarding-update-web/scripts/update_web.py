@@ -37,7 +37,12 @@ def main():
 
     # 2. Git Status and Staging
     print("[2/4] Staging files for git...")
-    run_cmd("git add CNAME index.html style.css script.js qrcode.png towarding_intro.pdf README.md ANTIGRAVITY.md")
+    run_cmd("git add CNAME index.html style.css script.js qrcode.png towarding_intro.pdf README.md ANTIGRAVITY.md logo_header_transparent.png logo_footer_transparent.png .agents/skills/towarding-update-web/scripts/update_web.py")
+    
+    # Dynamically find and stage local logo source files to avoid encoding issues
+    for f in os.listdir(project_dir):
+        if "Logo淡" in f or "Logo深" in f:
+            run_cmd(f'git add "{f}"')
     
     # 3. Git Commit
     status = run_cmd("git status --porcelain")
