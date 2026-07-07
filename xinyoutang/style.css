@@ -319,7 +319,7 @@ h1, h2, h3, h4 {
 .hero-section {
   position: relative;
   padding: 240px 0 180px;
-  background-color: #00142c;
+  background-color: #041527;
   color: #FFFFFF;
   overflow: hidden;
 }
@@ -334,8 +334,11 @@ h1, h2, h3, h4 {
 }
 
 .hero-bg-image {
-  width: 100%;
-  height: 100%;
+  position: absolute;
+  top: 8%;
+  right: 5%;
+  width: 84%;
+  height: 84%;
   object-fit: contain;
   object-position: right center;
 }
@@ -346,7 +349,7 @@ h1, h2, h3, h4 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, #00142c 0%, #00142c 15%, rgba(0, 20, 44, 0.3) 55%, rgba(0, 20, 44, 0) 85%);
+  background: linear-gradient(to right, #041527 0%, #041527 15%, rgba(4, 21, 39, 0.35) 55%, rgba(4, 21, 39, 0) 85%);
   pointer-events: none;
 }
 
@@ -1956,7 +1959,7 @@ h1, h2, h3, h4 {
     display: flex;
     flex-direction: column;
     padding: 120px 0 0 0;
-    background-color: #00142c;
+    background-color: #041527;
   }
   .hero-container {
     order: 1;
@@ -1980,10 +1983,16 @@ h1, h2, h3, h4 {
     margin-top: 20px;
   }
   .hero-bg-image {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
     object-position: center center;
   }
   .hero-bg-overlay {
-    background: linear-gradient(to bottom, #00142c 0%, rgba(0, 20, 44, 0.2) 50%, #00142c 100%);
+    background: linear-gradient(to bottom, #041527 0%, rgba(4, 21, 39, 0.2) 50%, #041527 100%);
   }
   .video-card-horizontal {
     flex-direction: column;
