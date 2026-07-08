@@ -1617,11 +1617,11 @@ h1, h2, h3, h4 {
 
 .topic-num {
   position: absolute;
-  top: 5px;
-  right: 15px;
-  font-size: 72px;
+  top: 35px;
+  right: 45px;
+  font-size: 48px;
   font-weight: 700;
-  color: rgba(255, 242, 0, 0.85);
+  color: #ff7f27;
   font-family: 'Outfit', sans-serif;
   line-height: 1;
   user-select: none;
