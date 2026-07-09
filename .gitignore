@@ -73,3 +73,6 @@ web_modules/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Date-based backup folders
+20[0-9][0-9][0-9][0-9][0-9][0-9]/
