@@ -207,4 +207,15 @@ document.addEventListener('DOMContentLoaded', () => {
     revealObserver.observe(el);
   });
 
+  // 8. Download Intro PDF & Open in New Tab
+  const downloadIntroBtn = document.getElementById('download-intro-btn');
+  if (downloadIntroBtn) {
+    downloadIntroBtn.addEventListener('click', () => {
+      // Open PDF in a new tab/window after a tiny delay so the browser can trigger the download first
+      setTimeout(() => {
+        window.open('/towarding_intro.pdf', '_blank');
+      }, 100);
+    });
+  }
+
 });
