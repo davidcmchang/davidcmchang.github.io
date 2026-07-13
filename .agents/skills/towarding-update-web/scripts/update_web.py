@@ -35,27 +35,66 @@ def main():
         print(f"Error creating CNAME: {e}")
         return
 
-    # 2. Git Status and Staging
-    print("[2/4] Staging files for git...")
-    run_cmd("git add CNAME index.html style.css script.js qrcode.png towarding_intro.pdf README.md ANTIGRAVITY.md logo_header_transparent.png logo_footer_transparent.png .agents/skills/towarding-update-web/scripts/update_web.py")
+    # 2. Copy webpage files to Backup folder
+    print("[2/5] Backing up webpage files to Backup folder...")
+    backup_dir = os.path.join(project_dir, "Backup")
+    try:
+        if not os.path.exists(backup_dir):
+            os.makedirs(backup_dir)
+            print("Created Backup directory.")
+            
+        files_to_backup = [
+            "index.html",
+            "style.css",
+            "script.js",
+            "hero_bg.png",
+            "logo_header_transparent.png",
+            "logo_footer_transparent.png",
+            "qrcode.png",
+            "towarding_intro.pdf"
+        ]
+        
+        import shutil
+        for f in files_to_backup:
+            src = os.path.join(project_dir, f)
+            dst = os.path.join(backup_dir, f)
+            if os.path.exists(src):
+                shutil.copy2(src, dst)
+                print(f"Backed up file: {f}")
+                
+        # Copy images folder recursively
+        src_images = os.path.join(project_dir, "images")
+        dst_images = os.path.join(backup_dir, "images")
+        if os.path.exists(src_images):
+            if os.path.exists(dst_images):
+                shutil.rmtree(dst_images)
+            shutil.copytree(src_images, dst_images)
+            print("Backed up images directory.")
+    except Exception as e:
+        print(f"Error performing backup: {e}")
+        return
+
+    # 3. Git Status and Staging
+    print("[3/5] Staging files for git...")
+    run_cmd("git add CNAME index.html style.css script.js qrcode.png towarding_intro.pdf README.md ANTIGRAVITY.md logo_header_transparent.png logo_footer_transparent.png hero_bg.png images Backup .gitignore .agents/skills/towarding-update-web/scripts/update_web.py .agents/skills/towarding-close-work/SKILL.md .agents/skills/towarding-close-work/scripts/backup_web.py")
     
     # Dynamically find and stage local logo source files to avoid encoding issues
     for f in os.listdir(project_dir):
         if "Logo淡" in f or "Logo深" in f:
             run_cmd(f'git add "{f}"')
     
-    # 3. Git Commit
+    # 4. Git Commit
     status = run_cmd("git status --porcelain")
     if not status.stdout.strip():
-        print("[3/4] No changes to commit.")
+        print("[4/5] No changes to commit.")
     else:
-        print("[3/4] Committing changes...")
+        print("[4/5] Committing changes...")
         # Use a generic update commit message
-        commit_res = run_cmd('git commit -m "site: update web content and verify domain"')
+        commit_res = run_cmd('git commit -m "site: update web content and verify domain with backup"')
         print(commit_res.stdout.strip())
         
-    # 4. Force Push to Remote main branch
-    print("[4/4] Force pushing changes to davidcmchang.github.io...")
+    # 5. Force Push to Remote main branch
+    print("[5/5] Force pushing changes to davidcmchang.github.io...")
     push_res = run_cmd("git push -f origin main")
     print(push_res.stdout.strip())
     if push_res.stderr:
