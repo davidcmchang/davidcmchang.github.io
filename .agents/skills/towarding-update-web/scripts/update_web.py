@@ -8,7 +8,7 @@ def run_cmd(cmd, cwd=project_dir):
     # Run with empty GITHUB_TOKEN to ensure gh CLI credential helper works on Windows
     env = os.environ.copy()
     env["GITHUB_TOKEN"] = ""
-    result = subprocess.run(cmd, shell=True, cwd=cwd, text=True, capture_output=True, env=env)
+    result = subprocess.run(cmd, shell=True, cwd=cwd, text=True, capture_output=True, env=env, encoding="utf-8", errors="replace")
     return result
 
 def main():
