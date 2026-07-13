@@ -95,7 +95,7 @@ def main():
         
     # 5. Force Push to Remote main branch
     print("[5/5] Force pushing changes to davidcmchang.github.io...")
-    push_res = run_cmd("git push -f origin main")
+    push_res = run_cmd("git push -f origin HEAD:main")
     print(push_res.stdout.strip())
     if push_res.stderr:
         print(push_res.stderr.strip())
