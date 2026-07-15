@@ -3,12 +3,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebas
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  // Please replace with your Firebase project credentials:
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_PROJECT_ID.appspot.com",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyCZdRSHu_rHOmeP-Y6lgFoaTvQiJrRgzYg",
+  authDomain: "towardingreqform.firebaseapp.com",
+  projectId: "towardingreqform",
+  storageBucket: "towardingreqform.firebasestorage.app",
+  messagingSenderId: "641484304227",
+  appId: "1:641484304227:web:8e1176d8c3bc500e9e6d56",
+  measurementId: "G-L21NMYL0XK"
 };
 
 let db = null;
