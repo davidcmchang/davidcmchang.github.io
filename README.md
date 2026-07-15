@@ -43,13 +43,18 @@
   - 優化部署程式 `update_web.py`，每次更新時自動備份完整檔案至 `Backup` 資料夾並推送至 GitHub 用於緊急復原。
   - 分別對淡色版 Header Logo 及深色版 Footer Logo 重新高精度鏤空去背（消除字體內部的殘留白點，並將 Footer 文字改為純白）。
 - [x] **GitHub Pages 發佈與託管**。
+- [x] **Firebase Firestore 表單連線**：已成功串接 Cloud Firestore，表單能自動將使用者填寫的聯絡資訊（姓名、信箱、主題、訊息、時間戳記）寫入 `contact_messages` 資料庫，並設定了安全的寫入規則（僅允許所有人 create 寫入，禁止 read/update/delete 讀取或修改，確保安全防護）。
+- [x] **EmailJS 電子郵件通知整合**：在 `script.js` 與 `index.html` 中引入並配置 EmailJS SDK，綁定 Gmail 發信服務，將聯絡資訊即時通知至管理員信箱。
 
 ### 🚀 下一步計畫
-- [ ] 若有其他行銷影片或新專欄文章，可持續於資源中心更新。
-- [ ] 視需求將聯絡表單的 JavaScript 送出邏輯對接到實際的後端 API (如 Formspree 或 EmailJS)。
+- [ ] 解決 EmailJS 發送時依然跳出的 `The template ID not found` 400 錯誤。需請用戶再次確認 EmailJS 後台的範本 ID 是否已成功點擊「Save」存檔，或檢查是否因其他大小寫變數不符而導致無法載入。
+- [ ] 測試成功後，進行最後的發信功能驗證。
 
 ### ⚠️ 踩坑與解決方案紀錄
 *   **Windows 下 Git Dubious Ownership**：在 Windows 環境的 Git 初始化時容易觸發安全例外，已透過 `git config --global --add safe.directory` 解決。
 *   **Logo 去背與變形**：用戶上傳的 Logo 為 JPG 純白背景，已透過自製 Python 腳本轉為透明 PNG，並在 CSS 裡使用 `width: auto; object-fit: contain;` 以防圖片拉伸變形。
 *   **Windows Shell 逸出字元**：直接在 CLI 中呼叫 JSON 容易因逸出字元導致 HTTP 422 錯誤，已透過在 scratch 建立 `pages_payload.json` 並作為 file input 來完美避開此問題。
 *   **多處非相鄰 HTML 修改之損毀問題**：當使用 line-based replacement 工具對具有重疊或大量類似結構 tags 的 HTML 進行非相鄰多重修改時，容易引起結構錯亂或代碼遗漏。改用專門的 Python 腳本讀寫檔案並執行精準字串替換，能 100% 確保結構正確且高效。
+*   **瀏覽器快取 HTML 與 EmailJS 公鑰失效**：由於 GitHub Pages 靜態網站具有 HTML 快取，更新後 `index.html` 的公鑰可能未被即時載入，導致「Public Key is invalid」錯誤。解決方案是將公鑰直接寫在 `script.js` 中，並作為 `emailjs.send` 的第四個參數傳入以強制覆蓋。
+*   **EmailJS v4 參數格式變更**：EmailJS Browser SDK 第 4 版中，`emailjs.send` 的第四個參數必須是 `{ publicKey: "..." }` 的 options 物件格式，如果像舊版一樣直接帶入字串，會導致公鑰被解析為 undefined 並報 400 錯誤。
+*   **EmailJS 變數大小寫敏感**：EmailJS 的模板變數（例如 `{{subject}}`）嚴格區分大小寫，必須與 JavaScript 送出之物件 key（`subject`）完全一致，否則主題與信件無法渲染。
