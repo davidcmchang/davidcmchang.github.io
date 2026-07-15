@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
           email: email,
           subject: subject,
           message: message
-        }).then(() => {
+        }, "aXx7F2PnXJ4KmhsPo").then(() => {
           console.log("Email notification sent successfully!");
         }).catch((err) => {
           console.error("EmailJS send failed:", err);
