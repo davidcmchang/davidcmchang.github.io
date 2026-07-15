@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // 2. Send email notification via EmailJS if configured
       if (typeof emailjs !== "undefined") {
-        emailjs.send("YOUR_EMAILJS_SERVICE_ID", "YOUR_EMAILJS_TEMPLATE_ID", {
+        emailjs.send("service_4smsj2w", "template_vibyrp8", {
           name: name,
           email: email,
           subject: subject,
