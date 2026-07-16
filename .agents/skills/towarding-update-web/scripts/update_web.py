@@ -51,7 +51,9 @@ def main():
             "logo_header_transparent.png",
             "logo_footer_transparent.png",
             "qrcode.png",
-            "towarding_intro.pdf"
+            "towarding_intro.pdf",
+            "favicon.ico",
+            "favicon.png"
         ]
         
         import shutil
@@ -76,7 +78,7 @@ def main():
 
     # 3. Git Status and Staging
     print("[3/5] Staging files for git...")
-    run_cmd("git add CNAME index.html style.css script.js qrcode.png towarding_intro.pdf README.md ANTIGRAVITY.md logo_header_transparent.png logo_footer_transparent.png hero_bg.png images Backup .gitignore .agents/skills/towarding-update-web/scripts/update_web.py .agents/skills/towarding-close-work/SKILL.md .agents/skills/towarding-close-work/scripts/backup_web.py")
+    run_cmd("git add CNAME index.html style.css script.js qrcode.png towarding_intro.pdf README.md ANTIGRAVITY.md logo_header_transparent.png logo_footer_transparent.png hero_bg.png favicon.ico favicon.png images Backup .gitignore .agents/skills/towarding-update-web/scripts/update_web.py .agents/skills/towarding-close-work/SKILL.md .agents/skills/towarding-close-work/scripts/backup_web.py")
     
     # Dynamically find and stage local logo source files to avoid encoding issues
     for f in os.listdir(project_dir):

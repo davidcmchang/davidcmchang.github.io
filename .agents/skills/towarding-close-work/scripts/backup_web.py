@@ -26,7 +26,9 @@ def perform_backup():
         "logo_header_transparent.png",
         "logo_footer_transparent.png",
         "qrcode.png",
-        "towarding_intro.pdf"
+        "towarding_intro.pdf",
+        "favicon.ico",
+        "favicon.png"
     ]
     
     dirs_to_copy = [
